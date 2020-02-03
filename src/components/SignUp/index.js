@@ -27,7 +27,17 @@ class SignUpForm extends Component {
   }
 
   handleSubmit(evt) {
+    const { username, passwordOne, email } = this.state;
+    this.props.firebase
+      .doCreateUserWithEmailAndPassword(email, passwordOne)
+      .then(authUser => {
+        this.setState({ ...INITIAL_STATE });
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
 
+      evt.preventDefault();
   }
 
   handleInputChange(evt) {
