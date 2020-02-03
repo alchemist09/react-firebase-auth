@@ -9,4 +9,26 @@ const SignUpPage = () => (
   </div>
 );
 
-export default SignUp;
+class SignUpForm extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  handleSubmit(evt) {
+
+  }
+
+  handleInputChange(evt) {
+
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit} >
+      
+      </form>
+    )
+  }
+}
+
+export default SignUpPage;
