@@ -33,9 +33,39 @@ class SignUpForm extends Component {
   }
 
   render() {
+    const { username, email, passwordOne, passwordTwo, error } = this.state;
     return (
       <form onSubmit={this.handleSubmit} >
-      
+        <input
+          name="username"
+          value={username}
+          onChange={this.handleInputChange}
+          type="text"
+          placeholder="Username"
+        />
+        <input
+          name="email"
+          value={email}
+          onChange={this.handleInputChange}
+          type="text"
+          placeholder="Email"
+        />
+        <input
+          name="passwordOne"
+          value={passwordOne}
+          onChange={this.handleInputChange}
+          type="password"
+          placeholder="Enter Password"
+        />
+        <input
+          name="passwordTwo"
+          value={passwordTwo}
+          onChange={this.handleInputChange}
+          type="password"
+          placeholder="Verify Password"
+        />
+        <button type="submit">Sign Up</button>
+        {error && <p>{error.message}</p>}
       </form>
     );
   }
