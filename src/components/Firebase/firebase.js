@@ -42,6 +42,14 @@ class Firebase {
   doSignOut() {
     this.auth.signOut();
   }
+
+  /**
+   * Reset user's password
+   * @param {string} email - The email to send the password reset link to 
+   */
+  doPasswordReset(email) {
+    this.auth.sendPasswordResetEmail(email);
+  }
 }
 
 export default Firebase;
