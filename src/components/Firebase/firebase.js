@@ -17,6 +17,15 @@ class Firebase {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
   }
+
+  /**
+   * Method that enables registration of a user in the application using their email and password
+   * @param {string} email - The user's email address
+   * @param {string} password - The user's password
+   */
+  doCreateUserWithEmailAndPassword(email, password) {
+    this.auth.createUserWithEmailAndPassword(email, password);
+  }
 }
 
 export default Firebase;
