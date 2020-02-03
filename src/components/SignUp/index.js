@@ -22,6 +22,8 @@ class SignUpForm extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleSubmit(evt) {
@@ -29,7 +31,9 @@ class SignUpForm extends Component {
   }
 
   handleInputChange(evt) {
-
+    this.setState({
+      [evt.target.name]: evt.target.value
+    })
   }
 
   render() {
