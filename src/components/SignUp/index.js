@@ -34,6 +34,11 @@ class SignUpForm extends Component {
 
   render() {
     const { username, email, passwordOne, passwordTwo, error } = this.state;
+    const isInvalid = passwordOne !== passwordTwo || 
+                      username === "" ||
+                      email === "" ||
+                      passwordOne === "";
+
     return (
       <form onSubmit={this.handleSubmit} >
         <input
@@ -64,7 +69,7 @@ class SignUpForm extends Component {
           type="password"
           placeholder="Verify Password"
         />
-        <button type="submit">Sign Up</button>
+        <button disabled={isInvalid} type="submit">Sign Up</button>
         {error && <p>{error.message}</p>}
       </form>
     );
