@@ -27,8 +27,15 @@ class SignUpForm extends Component {
       <form onSubmit={this.handleSubmit} >
       
       </form>
-    )
+    );
   }
 }
+
+const SignUpLink = () => (
+  <p>
+    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+  </p>
+)
+export { SignUpForm, SignUpLink }
 
 export default SignUpPage;
