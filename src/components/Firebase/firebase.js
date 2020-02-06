@@ -40,14 +40,14 @@ class Firebase {
    * @param {string} password - The user's password
    */
   doSignInWithEmailAndPassword(email, password) {
-    this.auth.signInWithEmailAndPassword(email, password);
+    return this.auth.signInWithEmailAndPassword(email, password);
   }
 
   /**
    * Signs out the currently logged in user
    */
   doSignOut() {
-    this.auth.signOut();
+    return this.auth.signOut();
   }
 
   /**
@@ -55,7 +55,7 @@ class Firebase {
    * @param {string} email - The email to send the password reset link to 
    */
   doPasswordReset(email) {
-    this.auth.sendPasswordResetEmail(email);
+    return this.auth.sendPasswordResetEmail(email);
   }
 
   /**
@@ -63,7 +63,7 @@ class Firebase {
    * @param {string} password - The new password
    */
   doPasswordUpdate(password) {
-    this.auth.currentUser.updatePassword(password);
+    return this.auth.currentUser.updatePassword(password);
   }
 }
 
