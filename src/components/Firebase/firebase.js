@@ -16,6 +16,13 @@ class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
+
+    // bind instance methods
+    this.doCreateUserWithEmailAndPassword = this.doCreateUserWithEmailAndPassword.bind(this);
+    this.doSignInWithEmailAndPassword = this.doSignInWithEmailAndPassword.bind(this);
+    this.doSignOut = this.doSignOut.bind(this);
+    this.doPasswordReset = this.doPasswordReset.bind(this);
+    this.doPasswordUpdate = this.doPasswordUpdate.bind(this);
   }
 
   /**
@@ -24,7 +31,7 @@ class Firebase {
    * @param {string} password - The user's password
    */
   doCreateUserWithEmailAndPassword(email, password) {
-    this.auth.createUserWithEmailAndPassword(email, password);
+    return this.auth.createUserWithEmailAndPassword(email, password);
   }
 
   /**
