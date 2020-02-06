@@ -20,13 +20,18 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(evt) {
-    const { username, passwordOne, email } = this.state;
+    console.log("handleSubmit() was called...............");
+    console.log(this.props.firebase);
+    const { passwordOne, email } = this.state;
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
+        console.log("SIGN UP SUCCESSFUL!!!............");
+        console.log("Auth User: ", authUser);
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
       })
@@ -38,6 +43,7 @@ class SignUpFormBase extends Component {
   }
 
   handleInputChange(evt) {
+    console.log("Input Change: ", evt.target.name);
     this.setState({
       [evt.target.name]: evt.target.value
     })
