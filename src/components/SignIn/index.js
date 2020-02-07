@@ -18,6 +18,7 @@ class SignInFormBase extends Component {
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(evt) {
@@ -28,11 +29,26 @@ class SignInFormBase extends Component {
     })
   }
 
+  handleSubmit(evt) {
+    console.log("handleSubmit() called :.............");
+    const { email, password } = this.state;
+    this.props.firebase
+      .doSignInWithEmailAndPassword(email, password)
+      .then(authUser => {
+        console.log("Authenticated User: ", authUser);
+        this.setState({ ...INITIAL_STATE });
+      })
+      .catch(error => {
+        this.setState({ error });
+      }) 
+    evt.preventDefault();
+  }
+
   render() {
     const { email, password } = this.state;
     const isInvalid = email === '' || password === '';
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input
           name="email"
           type="text" 
