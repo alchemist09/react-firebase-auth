@@ -5,13 +5,7 @@ import SignOutButton from '../SignOut';
 
 const Navigation = () => (
   <div>
-    <ul>
-      <li>
-        <Link to={ROUTES.SIGN_IN}>Sign In</Link> 
-      </li>
-      
-      
-    </ul>
+    
   </div>
 );
 
@@ -31,6 +25,17 @@ const NavigationAuth = () => (
     </li>
     <li>
         <SignOutButton />
+    </li>
+  </ul>
+)
+
+const NavigationNoAuth = () => (
+  <ul>
+    <li>
+      <Link to={ROUTES.LANDING}>Landing</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
     </li>
   </ul>
 )
