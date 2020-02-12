@@ -23,20 +23,16 @@ class SignInFormBase extends Component {
   }
 
   handleInputChange(evt) {
-    console.log("handleInputChange() called......");
-    console.log(evt.target.name, ': ', evt.target.value);
     this.setState({
       [evt.target.name]: evt.target.value
     })
   }
 
   handleSubmit(evt) {
-    console.log("handleSubmit() called :.............");
     const { email, password } = this.state;
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(authUser => {
-        console.log("Authenticated User: ", authUser);
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
       })
