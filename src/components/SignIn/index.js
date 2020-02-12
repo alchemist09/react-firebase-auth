@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
+import * as ROUTES from '../../constants/routes';
 
 const  INITIAL_STATE = {
   email: '',
@@ -37,6 +38,7 @@ class SignInFormBase extends Component {
       .then(authUser => {
         console.log("Authenticated User: ", authUser);
         this.setState({ ...INITIAL_STATE });
+        this.props.history.push(ROUTES.HOME);
       })
       .catch(error => {
         this.setState({ error });
