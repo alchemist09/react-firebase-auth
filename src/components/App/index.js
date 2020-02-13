@@ -1,4 +1,5 @@
 import React from 'react';
+import { withAuthentication } from '../Session';
 import { 
   BrowserRouter as Router,
   Route
@@ -31,4 +32,4 @@ const App = () => (
   </Router>
 );
 
-export default App;
+export default withAuthentication(App);
