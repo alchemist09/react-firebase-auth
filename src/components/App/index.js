@@ -42,7 +42,7 @@ class App extends Component {
     return(
       <AuthUserContext.Provider value={this.state.authUser}>
         <Router>
-          <Navigation authUser={this.state.authUser} />
+          <Navigation />
           <hr />
 
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
