@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
+import { AuthUserContext } from '../Session';
 import { 
   BrowserRouter as Router,
   Route
@@ -39,18 +40,20 @@ class App extends Component {
 
   render() {
     return(
-      <Router>
-        <Navigation authUser={this.state.authUser} />
-        <hr />
+      <AuthUserContext.Provider value={this.state.authUser}>
+        <Router>
+          <Navigation authUser={this.state.authUser} />
+          <hr />
 
-        <Route exact path={ROUTES.LANDING} component={LandingPage} />
-        <Route path={ROUTES.HOME} component={HomePage} />
-        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-        <Route path={ROUTES.ADMIN} component={AdminPage} />
-        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      </Router>
+          <Route exact path={ROUTES.LANDING} component={LandingPage} />
+          <Route path={ROUTES.HOME} component={HomePage} />
+          <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+          <Route path={ROUTES.ADMIN} component={AdminPage} />
+          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+        </Router>
+      </AuthUserContext.Provider>
     );
   }
 }
