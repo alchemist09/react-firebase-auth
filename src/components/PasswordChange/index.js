@@ -41,6 +41,7 @@ class PasswordChangeForm extends Component {
 
   render() {
     const { password_one, password_two} = this.state;
+    const isInvalid = password_one !== password_two || password_one === "";
     return (
       <form onSubmit={this.handleSubmit}>
         <input 
@@ -57,7 +58,7 @@ class PasswordChangeForm extends Component {
           onChange={this.onChange}
           placeholder="Confirm Password"
         />
-        <button type="submit">Change Password</button>
+        <button disabled={isInvalid} type="submit">Change Password</button>
       </form>
     );
   }
