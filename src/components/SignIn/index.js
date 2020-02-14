@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
+import { SignUpLink } from '../SignUp';
 import * as ROUTES from '../../constants/routes';
 
 const  INITIAL_STATE = {
@@ -77,6 +78,7 @@ const SignInPapge = () => (
   <div>
     <h1>Sign In</h1>
     <SignInForm />
+    <SignUpLink />
   </div>
 );
 
