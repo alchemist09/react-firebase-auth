@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const PasswordForeget = () => (
-  <div>
-    <h1>Password Forget</h1>
-  </div>
-);
+class PasswordForgetFormBase extends Component {
 
-export default PasswordForeget;
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      email: '',
+      error: null
+    }
+  }
+
+  render() {
+    const { email} = this.state;
+    return (
+      <form>
+        <input
+          type="text"
+          name="email"
+          placeholder="Enter Your Email Address"
+          value={email}
+        />
+        <button type="submit">Reset Password</button>
+      </form>
+    );
+  }
+}
+
+export default PasswordForgetFormBase;
