@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withFirebase } from '../Firebase';
 
 const INITIAL_STATE = {
   email: '',
@@ -23,12 +24,22 @@ class PasswordForgetFormBase extends Component {
     });
   }
 
+  handleSubmit(evt) {
+    const { email, error } = this.state;
+    this.props.firebase
+      .doPasswordReset(email)
+      .then(() => this.setState({ ...INITIAL_STATE }))
+      .catch(() => this.setState({ error }));
+    
+    evt.preventDefault();
+  }
+
   render() {
     const { email} = this.state;
     const inValid = email === '';
 
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="email"
@@ -42,4 +53,6 @@ class PasswordForgetFormBase extends Component {
   }
 }
 
-export default PasswordForgetFormBase;
+const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
+
+export default PasswordForgetForm;
