@@ -14,6 +14,14 @@ class PasswordForgetFormBase extends Component {
     this.state = {
       ...INITIAL_STATE
     }
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(evt) {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    });
   }
 
   render() {
@@ -23,6 +31,7 @@ class PasswordForgetFormBase extends Component {
         <input
           type="text"
           name="email"
+          onChange={this.handleInputChange}
           placeholder="Enter Your Email Address"
           value={email}
         />
