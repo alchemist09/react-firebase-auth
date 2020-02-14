@@ -55,4 +55,11 @@ class PasswordForgetFormBase extends Component {
 
 const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
 
-export default PasswordForgetForm;
+const PasswordForgetPage = () => (
+  <div>
+    <h1>Reset Password</h1>
+    <PasswordForgetForm />
+  </div>
+);
+
+export default PasswordForgetPage;
