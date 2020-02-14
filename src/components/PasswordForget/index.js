@@ -66,10 +66,12 @@ const PasswordForgetPage = () => (
   </div>
 );
 
-const PassowrdForgetLink = () => (
+const PasswordForgetLink = () => (
   <p>
     <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
   </p>
 );
 
 export default PasswordForgetPage;
+
+export { PasswordForgetForm, PasswordForgetLink };
