@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withFirebase } from '../Firebase';
 
 const INITIAL_STATE = {
   password_one: '',
@@ -24,10 +25,24 @@ class PasswordChangeForm extends Component {
     })
   }
 
+  handleSubmit(evt) {
+    const { password_one } = this.state;
+    this.props.firebase
+      .doPasswordUpdate(password_one)
+      .then(() => {
+        this.setState({ ...INITIAL_STATE });
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
+
+    evt.preventDefault();
+  }
+
   render() {
     const { password_one, password_two} = this.state;
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input 
           type="password"
           name="password_one"
@@ -48,4 +63,4 @@ class PasswordChangeForm extends Component {
   }
 }
 
-export default PasswordChangeForm;
+export default withFirebase(PasswordChangeForm);
