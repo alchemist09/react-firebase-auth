@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 
+
+const INITIAL_STATE = {
+  email: '',
+  error: null
+}
+
 class PasswordForgetFormBase extends Component {
 
   constructor(props) {
     super(props);
-    
+
     this.state = {
-      email: '',
-      error: null
+      ...INITIAL_STATE
     }
   }
 
