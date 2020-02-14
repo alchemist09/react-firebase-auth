@@ -28,11 +28,11 @@ class PasswordForgetFormBase extends Component {
   }
 
   handleSubmit(evt) {
-    const { email, error } = this.state;
+    const { email } = this.state;
     this.props.firebase
       .doPasswordReset(email)
       .then(() => this.setState({ ...INITIAL_STATE }))
-      .catch(() => this.setState({ error }));
+      .catch(error => this.setState({ error }));
     
     evt.preventDefault();
   }
