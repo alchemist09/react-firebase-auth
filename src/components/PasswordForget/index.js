@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 const INITIAL_STATE = {
   email: '',
   error: null
@@ -26,6 +25,8 @@ class PasswordForgetFormBase extends Component {
 
   render() {
     const { email} = this.state;
+    const inValid = email === '';
+
     return (
       <form>
         <input
@@ -35,7 +36,7 @@ class PasswordForgetFormBase extends Component {
           placeholder="Enter Your Email Address"
           value={email}
         />
-        <button type="submit">Reset Password</button>
+        <button disabled={inValid} type="submit">Reset Password</button>
       </form>
     );
   }
