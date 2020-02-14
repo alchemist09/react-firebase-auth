@@ -1,8 +1,10 @@
 import React from 'react';
 import { withAuthentication } from '../Session';
+import { AuthUserContext } from '../Session';
 import { 
   BrowserRouter as Router,
-  Route
+  Route, 
+  Redirect
 } from 'react-router-dom';
 
 import Navigation from '../Navigation';
@@ -28,7 +30,12 @@ const App = () => (
     <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
     <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
     <Route path={ROUTES.ADMIN} component={AdminPage} />
-    <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+    <AuthUserContext.Consumer>
+      {
+        authUser => <Route path={ROUTES.ACCOUNT}>{ 
+          authUser ? <AccountPage /> : <Redirect to={ROUTES.SIGN_IN} />}</Route>
+      }  
+    </AuthUserContext.Consumer>
   </Router>
 );
 
