@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 
+const INITIAL_STATE = {
+  password_one: '',
+  password_two: '',
+  error: null
+}
+
 class PasswordChangeForm extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      password_one: '',
-      password_two: '',
-      error: null
-    }
+      ...INITIAL_STATE
+    };
 
     this.handleChange = this.handleChange.bind(this);
   }
