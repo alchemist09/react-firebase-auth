@@ -6,4 +6,6 @@ const Home = () => (
   </div>
 );
 
+const condition = authUser => authUser !== null
+
 export default Home;
