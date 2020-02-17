@@ -1,14 +1,33 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom';
+import { withAuthentication } from './index';
+import { compose } from 'recompose';
 
-const withAuthorization = () => Component => {
+import * as ROUTES from '../../constants/routes';
+
+const withAuthorization = (condition) => Component => {
   class WithAuthorization extends React.Component {
+
+    componentDidMount() {
+      this.listener = this.props.firebase.auth
+        .onAuthStateChange(authUser => {
+          if(!condition(authUser)) {
+            this.props.history.push(ROUTES.SIGN_IN);
+          }
+        });
+    }
+
     render() {
       return (
         <Component {...this.props} />
       );
     }
   }
-  return WithAuthorization;
+  
+  return compose(
+    withRouter,
+    withAuthentication
+  )(WithAuthorization);
 }
 
 export default withAuthorization;
