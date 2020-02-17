@@ -4,16 +4,17 @@ import PasswordChangeForm from '../PasswordChange';
 import { withAuthorization, AuthUserContext } from '../Session';
 
 const AccountPage = () => (
-  <div>
-    <h1>Account</h1>
-    <AuthUserContext.Consumer>
-      {
-        authUser => <p>Current User: {authUser.email}</p>
-      }
-      <PasswordChangeForm />
-      <PasswordForgetForm />
-    </AuthUserContext.Consumer>
-  </div>
+  <AuthUserContext.Consumer>
+  {
+    authUser => (
+      <div>
+        <h1>Account: {authUser.email}</h1>
+        <PasswordChangeForm />
+        <PasswordForgetForm />
+      </div>
+    )
+  }
+  </AuthUserContext.Consumer>
 );
 
 const condition = authUser => !!authUser;
