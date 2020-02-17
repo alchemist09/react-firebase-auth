@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 
 const withAuthorization = () => Component => {
-  class withAuthorization extends Component {
+  class WithAuthorization extends Component {
     render() {
       return (
         <Component {...this.props} />
       );
     }
   }
-  return withAuthorization;
+  return WithAuthorization;
 }
 
 export default withAuthorization;
