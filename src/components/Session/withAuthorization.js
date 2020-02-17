@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const withAuthorization = () => Component => {
-  class WithAuthorization extends Component {
+  class WithAuthorization extends React.Component {
     render() {
       return (
         <Component {...this.props} />
