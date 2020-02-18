@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 
 class AdminPage extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false,
+      users: {}
+    }
+  }
+
   render() {
     return (
       <div>
