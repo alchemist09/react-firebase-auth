@@ -53,6 +53,12 @@ class Firebase {
    * @param {string} password - The new password
    */
   doPasswordUpdate = (password) => this.auth.currentUser.updatePassword(password);
+
+  /**
+   * Gets an instance of the current user
+   * @param {mixed} uid - A unique identifier of the user
+   */
+  getUser = uid => this.db.ref(`/users/${uid}`);
 }
 
 export default Firebase;
