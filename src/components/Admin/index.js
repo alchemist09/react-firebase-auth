@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withFirebase } from '../Firebase';
 
 class AdminPage extends Component {
 
@@ -8,6 +9,16 @@ class AdminPage extends Component {
       isLoading: false,
       users: {}
     }
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: true });
+    this.props.firebase.getAllUsers().on('value', snapshot => {
+      this.setState({
+        isLoading: false,
+        users: snapshot.val()
+      });
+    });
   }
 
   render() {
@@ -20,4 +31,4 @@ class AdminPage extends Component {
   } 
 }
 
-export default AdminPage;
+export default withFirebase(AdminPage);
