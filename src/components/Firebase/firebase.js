@@ -59,6 +59,11 @@ class Firebase {
    * @param {mixed} uid - A unique identifier of the user
    */
   getUser = uid => this.db.ref(`/users/${uid}`);
+
+  /**
+   * Fetch all users from the database
+   */
+  getAllUsers = () => this.db.ref('/users');
 }
 
 export default Firebase;
