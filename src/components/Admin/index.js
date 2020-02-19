@@ -36,6 +36,7 @@ class AdminPage extends Component {
       <div>
         <h1>Admin</h1>
         <p>Only users with Admin Privileges can access the Admin Page </p>
+        <UsersList users={this.state.users} />
        </div>
     );
   } 
