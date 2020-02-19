@@ -55,13 +55,13 @@ class Firebase {
   doPasswordUpdate = (password) => this.auth.currentUser.updatePassword(password);
 
   /**
-   * Gets an instance of the current user
+   * Species location of DB where data of individual users will be read from or written to
    * @param {mixed} uid - A unique identifier of the user
    */
   getUser = uid => this.db.ref(`/users/${uid}`);
 
   /**
-   * Fetch all users from the database
+   * Specifies location of DB where data of all users will be read from or written to 
    */
   getAllUsers = () => this.db.ref('/users');
 }
