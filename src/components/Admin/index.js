@@ -7,16 +7,22 @@ class AdminPage extends Component {
     super(props);
     this.state = {
       isLoading: false,
-      users: {}
+      users: []
     }
   }
 
   componentDidMount() {
     this.setState({ isLoading: true });
     this.props.firebase.getAllUsers().on('value', snapshot => {
+      const user_data = snapshot.val();
+      const user_list = Object.keys(user_data).map(key => ({
+        ...user_data[key],
+        uid: key
+      }));
+
       this.setState({
         isLoading: false,
-        users: snapshot.val()
+        users: user_list
       });
     });
   }
