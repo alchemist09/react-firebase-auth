@@ -27,6 +27,10 @@ class AdminPage extends Component {
     });
   }
 
+  componentWillUnmount() {
+    this.props.firebase.getAllUsers().off();
+  }
+
   render() {
     return (
       <div>
